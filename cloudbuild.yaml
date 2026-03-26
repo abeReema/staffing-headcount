@@ -41,4 +41,4 @@ substitutions:
 tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed
-  - guide-assignment-requests
+  - staffing-command-center
