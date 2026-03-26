@@ -1,0 +1,161 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap');
+
+/* ── Base ── */
+html, body, [class*="css"] {
+    font-family: 'Poppins', monospace;
+    background-color: #0c0e14;
+    color: #c8cdd8;
+}
+
+/* ── Hide default streamlit chrome ── */
+#MainMenu, footer, header { visibility: hidden; }
+
+/* ── Page title ── */
+.page-title {
+    font-family: 'Lora', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #555d72;
+    margin-bottom: 0.15rem;
+}
+.page-subtitle {
+    font-size: 0.78rem;
+    color: #555d72;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+/* ── Metric cards ── */
+.metric-card {
+    background: #13161f;
+    border: 1px solid #1e2130;
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+}
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent, #3d6fff);
+}
+.metric-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f0f2f7;
+    margin-bottom: 0.5rem;
+}
+.metric-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f0f2f7;
+    line-height: 1;
+}
+.metric-badge {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.badge-over  { background: #1a2e1a; color: #4caf7d; border: 1px solid #2a4a2a; }
+.badge-under { background: #2e1a1a; color: #e05c5c; border: 1px solid #4a2a2a; }
+
+/* ── Section headers ── */
+.section-header {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #555d72;
+    border-bottom: 1px solid #1e2130;
+    padding-bottom: 0.5rem;
+    margin: 1.8rem 0 1rem 0;
+}
+
+/* ── Selectbox labels ── */
+.stSelectbox label {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #555d72 !important;
+}
+
+.stDataFrame tbody {
+    background-color: #f0f0f0; /* Example: Light gray background */
+    color: #333333;           /* Example: Dark text color */
+    border: 1px solid #cccccc; /* Example: Border */
+}
+/* You might also need to target individual rows or cells */
+div.stDataFrame tbody tr:hover {
+    background-color: #e0e0e0; /* Example: Hover effect */
+}
+
+/* ── Member table ── */
+.member-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+.member-table th {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c8cdd8;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid #1e2130;
+    text-align: left;
+    background: #0f1118;
+}
+.member-table td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid #13161f;
+    color: #c8cdd8;
+    background: #161924;
+}
+.member-table tr.high-risk td {
+    background: #0e1f12;
+    color: #6ddd96;
+}
+.member-table tr.high-risk td.risk-col {
+    color: #4caf7d;
+    font-weight: 500;
+}
+
+.risk-pill {
+    display: inline-block;
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    font-size: 0.7rem;
+}
+.risk-high { background: #1a2e1a; color: #4caf7d; }
+.risk-low  { background: #1a1e2e; color: #4f8ef7; }
+
+/* ── Nav pills in sidebar ── */
+.nav-pill {
+    display: block;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: #555d72;
+    text-decoration: none;
+    margin-bottom: 0.3rem;
+    transition: all 0.15s;
+}
+.nav-pill.active {
+    background: #13161f;
+    color: #f0f2f7;
+    border-left: 2px solid #3d6fff;
+}
+</style>

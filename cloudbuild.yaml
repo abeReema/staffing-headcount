@@ -1,0 +1,44 @@
+steps:
+# Kaniko build step
+- id: kaniko
+  name: gcr.io/kaniko-project/executor:latest
+  args:
+    [
+      "--cache=false",
+      "--dockerfile=Dockerfile",
+      "--destination=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$REVISION_ID"
+    ]
+
+# Deploy step
+- id: Deploy  
+  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+  args:
+    - beta
+    - run
+    - services
+    - update
+    - $_SERVICE_NAME
+    - '--platform=managed'
+    - '--image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$REVISION_ID'
+    - >-
+      --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$REVISION_ID,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,$_LABELS
+    - '--region=$_DEPLOY_REGION'
+    - '--iap'
+    - '--quiet'
+    - '--service-account=needs-modeling@production-329012.iam.gserviceaccount.com'
+    - '--session-affinity'
+    - '--set-env-vars=bq_dataset=dw'
+  entrypoint: gcloud
+timeout: 6000s
+options:
+  substitutionOption: ALLOW_LOOSE
+  logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _DEPLOY_REGION: us-central1
+  _GCR_HOSTNAME: us.gcr.io
+  _PLATFORM: managed
+  _SERVICE_NAME: staffing-command-center
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - guide-assignment-requests
